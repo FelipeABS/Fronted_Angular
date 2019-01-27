@@ -1,0 +1,25 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
+
+@import "~ngx-toastr/toastr.css";
+
+@import url(https://fonts.googleapis.com/icon?family=Roboto);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  background-color: #f0f0f0;
+  font-family: Roboto, 'Helvetice New', 'Arial', sans-serif
+}
+.app-loading {
+  .logo { 
+    width: 50%;
+    height: 50%;
+    
+    // this way asset gets processed by webpack 
+    background: url(./assets/imagenes/logoCarga.png) center center no-repeat; 
+  }
+}

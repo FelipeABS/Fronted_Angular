@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+<div class="container">
+	<div class="wrap">	
+		<form #formDocumentos="ngForm" (ngSubmit)="nuevoUsuario()">
+			<div class="row">
+				<div class="col-12" style="text-align: center;">
+					<h2>Datos de la Cuenta</h2>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					<mat-form-field class="form-field">
+				  	 <input matInput placeholder="Usuario" id="usuario" name="usuario" #usuario="ngModel" [(ngModel)]="usuarios.usuario" >
+					</mat-form-field>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					<mat-form-field class="form-field">
+			    	<input matInput type="password" placeholder="Contraseña" id="password" name="password" #password="ngModel" [(ngModel)]="usuarios.password" >
+			  	  </mat-form-field>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					<mat-form-field class="form-field">
+				 		<mat-select placeholder="Tipo de Cuenta" id="tipo" name="tipo" #tipo="ngModel" [(ngModel)]="usuarios.tipo">
+				 			<mat-option disabled="true">Porfavor Selecciona uno</mat-option>
+					    	<mat-option *ngFor="let tipo of tipos" [value]="tipo.value" >
+					      		{{ tipo.viewValue }}
+					    	</mat-option>
+				  		</mat-select>
+		  			</mat-form-field>
+				</div>
+				<div class="col-lg-6 col-md-6"></div>
+				<div class="col-12" style="text-align: center;">
+					<h2>Datos Personales</h2>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					<mat-form-field class="form-field">
+			    	<input matInput placeholder="Nombre" id="Nombre" name="Nombre" #Nombre="ngModel" [(ngModel)]="usuarios.Nombre" >
+			  	  </mat-form-field>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					<mat-form-field class="form-field">
+			    	<input matInput placeholder="Apellido Paterno" id="Apellido_Paterno" name="Apellido_Paterno" #Apellido_Paterno="ngModel" [(ngModel)]="usuarios.Apellido_Paterno" >
+
+			  	  </mat-form-field>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					<mat-form-field class="form-field">
+			    	<input matInput placeholder="Apellido Materno" id="Apellido_Materno" name="Apellido_Materno" #Apellido_Materno="ngModel" [(ngModel)]="usuarios.Apellido_Materno" >
+
+			  	  </mat-form-field>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					<mat-form-field class="form-field">
+				    	<input matInput type="text" placeholder="Rut" id="Rut" name="rut" #rut="ngModel" [(ngModel)]="usuarios.Rut" validateRut formatRut/>
+				  </mat-form-field>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					 <mat-form-field class="form-field">
+			    	<input matInput placeholder="Cesfam" id="Cesfam" name="Cesfam" #Cesfam="ngModel" [(ngModel)]="usuarios.Cesfam" >
+
+			  	  </mat-form-field>
+				</div>
+				<div class="col-lg-6 col-md-6" style="margin-bottom: 15px;">
+					<mat-form-field class="form-field">
+			    	<input matInput placeholder="Sector" id="Sector" name="Sector" #Sector="ngModel" [(ngModel)]="usuarios.Sector" >
+			    	
+			  	  </mat-form-field>
+				</div>
+				<div class="col-lg-3 offset-1">
+					<span style="font-size: 12px;">Los campos con (*) son Obligatorios</span>
+				</div>
+				<div class="col-lg-6 col-md-6"></div>
+				<div class="col-lg-6 col-md-6">
+					<input type="reset" class="btn btn-default" value="Limpiar">
+				</div>
+				<div class="col-lg-6 col-md-6">
+				<button *ngIf="preloader == false" type="submit" class="btn btn-primary btn-raised" style="margin-top: 25px; width: 50%;">Crear Usuario</button>
+			  	<button *ngIf="preloader == true" class="btn btn-primary btn-raised"><div class="loader"></div></button>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<div class="row">
+	  <div class="col-lg-4 col-md-6">
+	    <button style="width: 80%;margin-top: 20px;margin-bottom:20px;" class="btn btn-primary" routerLink="/administrar"><i class="fas fa-arrow-circle-left"></i></button>
+	  </div>
+	</div>
+</div>
+
+<script src='https://rawgit.com/gpincheiraa/angular-rut-validator/master/src/angular-rut-validator.js'></script>

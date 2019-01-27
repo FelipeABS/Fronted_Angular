@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<section id="login">
+     <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form"  #formIngreso="ngForm" (ngSubmit)="onSubmit()">
+					<span class="login100-form-title p-b-43">
+						Ingreso
+					</span>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" placeholder="Usuario" name="usuario" #usuario="ngModel" [(ngModel)]="listaUsuarios.usuario">
+						<span class="focus-input100"></span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" placeholder="Contraseña" name="password" #password="ngModel" [(ngModel)]="listaUsuarios.password">
+						<span class="focus-input100"></span>
+					</div>			
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							Entrar
+						</button>
+					</div>
+					
+				</form>
+
+				<div class="login100-more" style="background-image: url('../../assets/login/images/bg-01.jpg'); height: auto;">
+				</div>
+			</div>
+		</div>
+	 </div>
+
+	<script src="../../assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../../assets/login/vendor/animsition/js/animsition.min.js"></script>
+	<script src="../../assets/login/vendor/bootstrap/js/popper.js"></script>
+	<script src="../../assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../assets/login/vendor/select2/select2.min.js"></script>
+	<script src="../../assets/login/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../../assets/login/vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="../../assets/login/vendor/countdowntime/countdowntime.js"></script>
+	<script src="../../assets/login/js/main.js"></script>
+</section>

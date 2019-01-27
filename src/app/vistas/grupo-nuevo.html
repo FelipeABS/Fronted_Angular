@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-lg-6 col-xl-6">
+		  <h2 style="text-align: center;margin-top: 25px;margin-bottom: 25px;">Lista de Usuarios</h2> 
+		  <table class="table table-hover table-sm table-striped table-bordered" style="width: 100%;" cellspacing="0">
+		    <thead class="table-primary">
+		      <tr>
+		        <th scope="col">Nombre</th>
+		        <th scope="col">Apellido</th>
+		        <th scope="col">Rut</th>
+		        <th scope="col">Opcion</th>
+		      </tr>
+		    </thead>
+		    <tbody class="table-body">
+	          <tr *ngFor="let usuario of Usuarios?.mostrandoUsuarios">
+	          	<ng-container *ngIf="mostrar(usuario._id)">
+			        <td>{{ usuario.Nombre }}</td> 
+			        <td> {{ usuario.Apellido_Paterno }}</td>
+			        <td> {{ usuario.Rut }}</td> 
+			        <td><button [disabled]="usuario._id == usuarios._id" type="button" class="btn btn-primary" (click)="agregarUsuario(usuario.Nombre,usuario.Apellido_Paterno,usuario.Rut,usuario._id,usuario.cuentaID.tipo)">Agregar</button></td>
+		        </ng-container>
+		      </tr>		    	  
+		    </tbody>
+		    <div *ngIf="preloader == true">
+		      <div class="loader"></div>
+		    </div>
+		  </table>
+		</div>
+		<div class="col-xs-12 col-lg-6 col-xl-6">
+			<h2 style="text-align: center; margin-top: 25px;">Usuarios Agregados</h2> 
+			<div class="row"> 
+				<div class="col-8 offset-2">
+					<mat-form-field style="width: 100%">
+	       			<input matInput style="width: 100%;" placeholder="Titulo" id="titulo" name="titulo" #titulo="ngModel" [(ngModel)]="TituloGrupo">
+	       			</mat-form-field>
+				</div>
+				<div class="col-12">
+					<ul class="sm-6 col-12" style="list-style-type: none;">
+			    		<li *ngFor="let persona of GrupoTem; let i = index">
+			    			<div class="row">
+							  <div class="col-8">
+							  	{{ persona.Nombre }}
+			    				{{ persona.Apellido }}
+			    				{{ persona.Rut }}
+							  </div>
+							  <div class="col-4">
+							  	<button class="btn btn-danger" (click)="eliminar(i)">Eliminar</button>
+							  </div>				    				
+			    			</div>	
+			    		</li>
+			    	</ul>
+			    	<div class="sm-6 col-12">
+			    		<button *ngIf="contador>0" class="btn btn-success" (click)="agregarGrupo()">Agregar Grupo</button>
+			    	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	  <div class="col-lg-4 col-md-6">
+	    <button style="width: 80%;margin-top: 20px;margin-bottom: 25px;" class="btn btn-primary" routerLink="/administrar"><i class="fas fa-arrow-circle-left"></i></button>
+	  </div>
+	</div>
+</div>

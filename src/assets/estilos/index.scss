@@ -1,0 +1,29 @@
+@import '../login/vendor/bootstrap/css/bootstrap.min.css';
+@import '../login/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
+@import '../login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css';
+@import '../login/vendor/animate/animate.css';
+@import '../login/vendor/css-hamburgers/hamburgers.min.css';
+@import '../login/vendor/animsition/css/animsition.min.css';
+@import '../login/vendor/animsition/css/animsition.min.css';
+@import '../login/vendor/select2/select2.min.css';
+@import '../login/vendor/daterangepicker/daterangepicker.css';
+@import '../login/css/util.css';
+@import '../login/css/main.css';
+
+
+
+.jumbotron{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+.formulario{
+	width: 40%;	
+}
+.grilla{
+  border-bottom: 1px solid #000;
+}
+.example-spacer{
+	flex: 1 1 auto;
+}

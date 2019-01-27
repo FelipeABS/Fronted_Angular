@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="wrap">
+    <form #formDocumentos="ngForm" (ngSubmit)="nuevoDocumento()">
+      <div class="row">
+        <div class="col-12" style="text-align: center;">
+          <h2>Datos del Documento</h2>
+        </div>
+        <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+          <mat-form-field class="form-field">
+            <input matInput placeholder="Titulo" id="titulo" name="titulo" #titulo="ngModel" [(ngModel)]="documento.titulo">
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+          <mat-form-field class="form-field">
+            <input matInput placeholder="Descripcion" id="descripcion" name="descripcion" #descripcion="ngModel" [(ngModel)]="documento.descripcion">
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 col-md-12"  style="margin-bottom: 15px;">
+          <select style="width: 90%;" class="multipleUsuarios" id="destinatario" name="destinatario" multiple="multiple">
+            <ng-container *ngFor="let usuarios of Usuarios">
+              <option *ngIf="usuarios._id != usuario._id && usuarios.cuentaID.tipo != 'adm'" [value]="[usuarios._id,usuarios.cuentaID.tipo]">{{ usuarios.Nombre }}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div class="col-lg-6 col-md-12"  style="margin-bottom: 15px;">
+          <select style="width: 90%;" class="multipleGroup" id="gruposDestino" name="gruposDestino" multiple="multiple">
+            <option *ngFor="let grupo of Grupos" [value]="grupo.titulo">{{ grupo.titulo }}</option>
+          </select>
+        </div>
+        <div class="col-lg-12 col-md-12">
+          <input type="file" name="file" id="file" style="width: 40%;" (change)="cargarFichero($event)"/>
+        </div>
+        <div class="col-lg-6 col-md-12" style="margin-bottom: 15px;">
+          <input type="reset" class="btn btn-default" value="Limpiar">
+        </div>
+        <div class="col-lg-6 col-md-12">
+           <button *ngIf="preloader == false" type="submit" class="btn btn-primary btn-raised">Enviar Documento</button>
+          <button *ngIf="preloader == true" class="btn btn-primary btn-raised"><div class="loader"></div></button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 ">
+      <button style="width: 80%;margin-top: 20px;" class="btn btn-primary" routerLink="/inicio"><i class="fas fa-arrow-circle-left"></i></button>
+    </div>
+  </div>
+</div>

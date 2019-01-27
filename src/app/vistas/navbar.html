@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  		<a class="navbar-brand" href="#"><img src="../../assets/imagenes/logo.jpeg" alt="Logo.jpeg"></a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+  		</button>
+
+  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+  	<span class="navbar-text font-italic ml-4 tex-center">Gestor de documentos de la Dirección de Administración de Salud
+    </span>
+    <ul *ngIf="identificado" class="navbar-nav ml-1 my-2 my-lg-0" style="align-items: flex-end;">
+       <img [src]="obtenerFoto()" style="width: 40px; height: 40px; border-radius: 20px">
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="display: inline-block;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ usuario.Nombre }} {{ usuario.Apellido_Paterno }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <button class="dropdown-item" (click)="configuracion()">Configuración <i class="fas fa-edit"></i></button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" (click)="cerrarSesion()">Cerrar sesión <i class="fas fa-sign-out-alt"></i></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

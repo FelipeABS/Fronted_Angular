@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="container">
+	<div class="card text-center col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 offset-md-2 offset-lg-2 offset-xl-2"  style="margin-top: 20px;">
+	  <div class="card-body">
+	    <h5 class="card-title">¿Qué desea hacer?</h5>
+	  </div>
+	</div>
+	
+	<mat-grid-list cols="4" rowHeight="150">
+		<mat-grid-tile *ngIf="this.usuario.cuentaID.tipo == 'adm'" [colspan]="4" [rowspan]="1">
+  		  <button class="btn btn-primary" style="width: 100%" (click)="onAdmUsuarioNuevo()"><i class="fas fa-user-plus fa-4x"></i><br><br>Nuevo Usuario</button>
+	    </mat-grid-tile>
+
+	    <mat-grid-tile *ngIf="this.usuario.cuentaID.tipo == 'adm'" [colspan]="4" [rowspan]="1">
+  		  <button class="btn btn-primary" style="width: 100%" (click)="onAdmUsuarioAdministrar()"><i class="fas fa-users-cog fa-4x"></i><br><br>Administrar Usuario</button>
+	    </mat-grid-tile>
+
+	    <mat-grid-tile *ngIf="this.usuario.cuentaID.tipo == 'adm'" [colspan]="4" [rowspan]="1">
+  		  <button class="btn btn-primary" style="width: 100%" (click)="oncuentaAdministrar()"><i class="fas fa-address-card fa-4x"></i><br><br>Administrar Cuentas</button>
+	    </mat-grid-tile>	
+
+	    <mat-grid-tile [colspan]="4" [rowspan]="1">
+  		  <button class="btn btn-primary" style="width: 100%"  (click)="onPerfilAdministrar()"><i class="fas fa-user-cog fa-4x"></i><br><br>Administrar Perfil</button>
+	    </mat-grid-tile>
+
+	    <mat-grid-tile [colspan]="4" [rowspan]="1">
+  		  <button class="btn btn-primary" style="width: 100%"  (click)="onGrupoNuevo()"><i class="fas fa-users fa-4x"></i><br><br>Crear Grupo</button>
+	    </mat-grid-tile>
+
+	    <mat-grid-tile [colspan]="4" [rowspan]="1">
+  		  <button class="btn btn-primary" style="width: 100%"  (click)="onGrupoAdministrar()"><i class="fab fa-whmcs fa-4x"></i><br><br>Administrar Grupo</button>
+	    </mat-grid-tile>		
+	</mat-grid-list>
+	<div class="row">
+	  <div class="col-lg-4 col-md-6">
+	    <button style="width: 80%;margin-top: 20px;margin-bottom: 30px;" class="btn btn-primary" routerLink="/inicio"><i class="fas fa-arrow-circle-left"></i></button>
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,152 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <legend style="text-align: center;margin-top: 25px;margin-bottom: 25px;">Administrar Grupos</legend>  
+  <table class="tables table-hover table-sm table-striped table-bordered" id="table" style="width: 100%;" cellspacing="0">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">Titulo</th>
+        <th scope="col">Integrantes</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody class="table-body"> 
+      <tr *ngFor="let grupo of Grupos; let i = index">
+        <td>{{grupo.titulo}}</td>
+        <td><button class="btn btn-success" (click)="verIntegrantes(i,grupo.titulo,grupo.usuarios)" data-toggle="modal" data-target="#exampleModalLong">Ver</button></td>
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="abrirModalactualizar(i,grupo.titulo,grupo.usuarios)">Actualizar</button>
+         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong2" (click)="abrirModalEliminar(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+    <div *ngIf="preloader == true">
+      <div class="loader"></div>
+    </div>
+  </table>
+  <div class="row">
+    <div class="col-lg-4 col-md-6">
+      <button style="width: 80%;margin-top: 20px;" class="btn btn-primary" routerLink="/administrar"><i class="fas fa-arrow-circle-left"></i></button>
+    </div>
+  </div>
+</div>
+<!--Modal Actualizar-->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Integrantes del grupo {{ tituloModal }}</h5>
+        <button type="button" class="close" (click)="close()" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+        <div class="row">
+          <div class="col-lg-7 col-dm-12">
+            <table class="table-hover table-sm table-striped table-bordered" id="table_actualizar" style="width: 100%;" cellspacing="0">
+            <thead class="table-primary">
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Rut</th>
+                <th>Opcion</th>
+              </tr>
+              </thead>
+              <tbody class="table-body">
+                  <tr *ngFor="let usuario of DatoUsuarios">
+                  <ng-container *ngIf="mostrar(usuario._id)">
+                  <td>{{ usuario.Nombre }}</td>
+                  <td>{{ usuario.Apellido_Paterno }}</td>
+                  <td>{{ usuario.Rut }}</td> 
+                  <td><button [disabled]="usuario._id == usuarios._id" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ActualizarModal" (click)="agregarModificar(usuario.Nombre,usuario.Apellido_Paterno,usuario.Rut,usuario._id,usuario.cuentaID.tipo)">Agregar</button></td>
+                  </ng-container>
+                </tr>           
+              </tbody>
+          </table>
+          </div>
+
+          <div class="col-lg-5 col-dm-12">
+            <div class="row" style="overflow-y: scroll;height: 300px;">
+              <div class="col-8 offset-2">
+                <mat-form-field style="width: 100%">
+                    <input matInput style="width: 100%;" placeholder="Titulo" id="titulo" name="titulo" #titulo="ngModel" [(ngModel)]="TituloGrupo">
+                    </mat-form-field>
+              </div>
+            
+
+              <ul class="col-dm-6 col-lg-12" style="list-style-type: none;">
+                <li *ngFor="let persona of GrupoTem; let i = index">
+                  <div class="row">
+                  <div class="col-8" style="margin-bottom: 5px;">
+                    {{ persona.Nombre }}
+                    {{ persona.Apellido }}
+                    {{ persona.Rut }}
+                  </div>
+                  <div class="col-4">
+                    <button class="btn btn-danger" (click)="eliminarModificar(i)">Eliminar</button>
+                  </div>
+                  </div>
+                  <div>
+                  
+                  </div>
+                </li>
+              </ul>
+              <div class="col-dm-6 col-lg-12">
+                <button *ngIf="contador>0" class="btn btn-success" (click)="agregarGrupo()">Agregar Grupo</button>
+              </div>
+
+            </div> 
+          </div>
+
+        </div>	
+      </div>
+      <div class="modal-footer">
+      	<button class="btn btn-success" (click)="modificarGrupo()" data-dismiss="modal">Modificar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Modal Ver -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Integrantes del grupo {{ tituloModal }}</h5>
+        <button type="button" class="close" (click)="close()" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<ul *ngFor="let grupo of GrupoTem">
+      		<li style="list-style-type: none;
+    margin: 0;
+    padding: 0;">
+      			Nombre : {{ grupo.Nombre }} {{ grupo.Apellido }} <br>
+	  			  Rut :{{ grupo.Rut}} <br>
+      		</li>
+      	</ul>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalLong2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Integrantes del grupo {{ tituloModal }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		¿ Estas Seguro de Eliminar Este grupo ?
+      </div>
+      <div class="modal-footer">
+      	<button class="btn btn-success" (click)="borrarGrupo()" data-dismiss="modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
